@@ -1,0 +1,5 @@
+<div>
+  <HeaderComponent v-bind:title="title" v-on:toggle-sidebar="$refs.sidebar.toggleSideBar()"></HeaderComponent>
+  <SidebarComponent ref="sidebar"></SidebarComponent>
+  <MainComponent></MainComponent>
+</div>

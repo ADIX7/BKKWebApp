@@ -1,0 +1,11 @@
+@import 'common';
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/leaflet/dist/leaflet";
+
+html, body, body > div {
+    height: 100%;
+}
+
+body .mainContent {
+    height: calc(100% - 56px);
+}
