@@ -1,0 +1,16 @@
+@import 'common';
+
+.autobuszIcon {
+    @extend %bkkImage;
+    background-position: 0 -60px;
+}
+
+.estiAutobuszIcon {
+    @extend %bkkImage;
+    background-position: 0 -120px;
+}
+
+.megalloIcon {
+    @extend %bkkImage;
+    background-position: -120px -260px;
+}

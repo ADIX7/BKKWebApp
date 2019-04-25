@@ -1,5 +1,6 @@
 <div>
   <HeaderComponent v-bind:title="title" v-on:toggle-sidebar="$refs.sidebar.toggleSideBar()"></HeaderComponent>
-  <SidebarComponent ref="sidebar"></SidebarComponent>
-  <MainComponent></MainComponent>
+  <SidebarComponent ref="sidebar" v-on:open-view="currentView = $event"></SidebarComponent>
+  <MainComponent v-if="currentView === 'main'" v-on:navigate-to-stop="navigateToStop($event)"></MainComponent>
+  <StopComponent v-if="currentView === 'stop'" v-bind:currentStop="currentStop"></StopComponent>
 </div>

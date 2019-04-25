@@ -2,31 +2,34 @@
 import HeaderComponent from "../HeaderComponent.vue";
 import MainComponent from "../MainComponent/MainComponent.vue";
 import SidebarComponent from "../Sidebar/Sidebar.vue";
-import "bootstrap";
-import "leaflet";
+import StopComponent from "../StopComponent/StopComponent.vue";
 
 export default {
   components: {
     HeaderComponent,
     MainComponent,
-    SidebarComponent
+    SidebarComponent,
+    StopComponent
   },
   data() {
     return {
-      currentView: "browse",
-      title: 'Main page'
+      currentView: "main",
+      currentStop: "",
+      title: "Main page"
     };
   },
   methods: {
-  }  
+    navigateToStop(event) {
+      this.currentStop = event;
+      this.currentView = "stop";
+    }
+  }
 };
 </script>
 
-<template src="./AppComponent.html">  
-</template>
+<template src="./AppComponent.html"></template>
 
 <style lang="scss">
-
 </style>
 
 

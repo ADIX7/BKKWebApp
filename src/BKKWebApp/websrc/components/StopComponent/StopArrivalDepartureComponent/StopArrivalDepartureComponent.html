@@ -1,0 +1,8 @@
+<div>
+    {{stopName}}
+    <div v-for="stopTime in stopTimeData">
+            {{stopTime.name}} > {{stopTime.stopHeadSign}} : 
+            <span v-if="stopTime.arriveAfter < 60">{{stopTime.arriveAfter}}</span>
+            <span v-else>{{stopTime.arriveAt}}</span>
+    </div>
+</div>
