@@ -10,7 +10,7 @@ namespace BKKWebApp.Data
     public enum Status
     {
         Unknown = 0,
-        Successed = 1,
+        Succeeded = 1,
         Failed = 2
     }
 

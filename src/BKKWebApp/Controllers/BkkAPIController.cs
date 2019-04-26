@@ -24,6 +24,7 @@ namespace BKKWebApp.Controllers
     [ApiController]
     public class BkkAPIController : ControllerBase
     {
+        public const string ArrivalsAndDeparturesForLocation = "arrivals-and-departures-for-location";
         HttpClient client = new HttpClient();
 
         string GetBaseQuery(string functionName, bool includeReferences)
@@ -42,22 +43,23 @@ namespace BKKWebApp.Controllers
 
             var response = new ResponseMessage()
             {
-                Status = Status.Successed,
+                Status = Status.Succeeded,
                 Payload = parsedContent
             };
 
             return response;
         }
 
-        [HttpGet("arrivals-and-departures-for-location")]
+        [HttpGet(ArrivalsAndDeparturesForLocation)]
         public async Task<ActionResult<string>> GetArrivalsAndDeparturesForLocation([FromQuery]float lat, [FromQuery]float lng)
         {
             string latS = lat.ToString().Replace(",", ".");
             string lngS = lng.ToString().Replace(",", ".");
-            var functionName = "arrivals-and-departures-for-location.json";
+
+            var functionName = ArrivalsAndDeparturesForLocation + ".json";
             var includeReferences = true;
+
             var query = GetBaseQuery(functionName, includeReferences) + $"lon={lngS}&lat={latS}&radius=100&onlyDepartures=false&limit=30&minutesBefore=30&minutesAfter=30&groupLimit=3&clientLon={lngS}&clientLat={latS}";
-            //query = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/arrivals-and-departures-for-location.json?key=apaiary-test&version=3&appVersion=apiary-1.0&includeReferences=true&lon=47.477900&lat=19.045807&lonSpan=&latSpan=&radius=100&onlyDepartures=false&limit=60&minutesBefore=2&minutesAfter=30&groupLimit=4&clientLon=47.477900&clientLat=19.045807";
 
             var ret = await client.GetAsync(query);
             var content = await ret.Content.ReadAsStringAsync();
@@ -73,7 +75,7 @@ namespace BKKWebApp.Controllers
             var functionName = "stops-for-location.json";
             var includeReferences = true;
 
-            var query = GetBaseQuery(functionName, includeReferences) + $"lon={lngS}&lat={latS}&radius=100";
+            var query = GetBaseQuery(functionName, includeReferences) + $"lon={lngS}&lat={latS}&radius=300";
 
             var ret = await client.GetAsync(query);
             var content = await ret.Content.ReadAsStringAsync();

@@ -2,7 +2,7 @@
     {{stopName}}
     <div v-for="stopTime in stopTimeData">
             {{stopTime.name}} > {{stopTime.stopHeadSign}} : 
-            <span v-if="stopTime.arriveAfter < 60">{{stopTime.arriveAfter}}</span>
-            <span v-else>{{stopTime.arriveAt}}</span>
+            <span v-if="stopTime.timeAfter() < 60">{{stopTime.timeAfter()}}</span>
+            <span v-else>{{stopTime.timeAt()}}</span>
     </div>
 </div>

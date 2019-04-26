@@ -30,18 +30,44 @@ export default {
         _this.stopTimeData = [];
 
         entry.stopTimes.forEach(function(element) {
+          console.log(element);
           let route =
             references.routes[references.trips[element.tripId].routeId];
 
           let arrivalTime = element.arrivalTime;
-        console.log("arrivalTime time: " + arrivalTime);
+          let departureTime = element.departureTime;
+          console.log("arrivalTime time: " + arrivalTime);
 
           _this.stopTimeData.push({
             name: route.shortName,
             description: route.description,
             stopHeadSign: element.stopHeadsign, //name of final stop
-            arriveAfter: Math.floor((arrivalTime - currentTime) / 60),
-            arriveAt: new Date(arrivalTime * 1000).toISOString().substr(11, 5)
+            arriveAfter:
+              arrivalTime === undefined
+                ? undefined
+                : Math.floor((arrivalTime - currentTime) / 60),
+            arriveAt:
+              arrivalTime === undefined
+                ? undefined
+                : new Date(Math.floor(arrivalTime * 1000))
+                    .toISOString()
+                    .substr(11, 5),
+            departureAfter:
+              departureTime === undefined
+                ? undefined
+                : Math.floor((departureTime - currentTime) / 60),
+            departureAt:
+              departureTime === undefined
+                ? undefined
+                : new Date(Math.floor(departureTime * 1000))
+                    .toISOString()
+                    .substr(11, 5),
+            timeAfter: function() {
+              return this.arriveAfter === undefined ? this.departureAfter : this.arriveAfter;
+            },
+            timeAt: function() {
+              return this.arriveAt === undefined ? this.departureAt : this.arriveAt;
+            }
           });
         });
       })

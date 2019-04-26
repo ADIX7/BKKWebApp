@@ -10,6 +10,16 @@
                 "${workspaceFolder}/src/BKKWebApp/BKKWebApp.csproj"
             ],
             "problemMatcher": "$msCompile"
-        }        
+        },
+        {
+            "label": "Generate SignalRHandlers",
+            "command": "dotnet-script",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/src/BKKWebApp/websrc/SignalRHandlers.csx",
+                "--no-cache"
+            ],
+            "problemMatcher": []
+        }
     ]
 }
