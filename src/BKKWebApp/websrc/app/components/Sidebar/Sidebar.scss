@@ -9,4 +9,27 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  display: grid;
+  grid-template-rows: auto 50px 50px;
+  grid-template-areas: 
+      "menu" 
+      "userData"
+      "signOut";
+
+  #mainSideBarMenu {
+    grid-area: menu;
+  }
+
+  #userData{
+    grid-area: userData;
+  }
+
+  #logoutForm {
+    grid-area: signOut;
+    text-align: right;
+    
+    button {
+      margin-right: 20px;
+    }
+  }
 }

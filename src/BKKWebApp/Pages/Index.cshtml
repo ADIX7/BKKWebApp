@@ -6,15 +6,9 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-
-
 @if (SignInManager.IsSignedIn(User))
 {
-    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-    </form>
-    <div>
+    <div id="_antiForgeryHolder" style="display: none">
         @Html.AntiForgeryToken()
     </div>
     <app id="app"></app>
@@ -23,15 +17,16 @@
 
     @section Header {
         <link rel="stylesheet" href="/app/css/main.css">
+        <script>
+            var userName = "@User.Identity.Name";
+        </script>
     }
 }
 else
 {
-
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+    @section Header {
+        <script>
+            location.href = "/Identity/Account/Login";
+        </script>
+    }
 }

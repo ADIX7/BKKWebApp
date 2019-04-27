@@ -1,6 +1,6 @@
 #!/usr/bin/env dotnet-script
 
-#r "../bin/Debug/netcoreapp2.2/BKKWebApp.dll"
+#r "../../bin/Debug/netcoreapp2.2/BKKWebApp.dll"
 
 using System;
 using System.Collections;

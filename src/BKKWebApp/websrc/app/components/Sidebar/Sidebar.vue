@@ -1,4 +1,5 @@
 <script>
+var $ = require("jquery");
 export default {
   props: ["current-view"],
   data() {
@@ -27,6 +28,15 @@ export default {
     openView(view) {
       this.$emit("open-view", view);
       this.closeSideBar();
+    }
+  },
+  mounted: function() {
+    $("#_antiForgeryHolder").children("input").appendTo("#logoutForm");
+    $("#_antiForgeryHolder").remove();
+  },
+  computed: {
+    userName: function() {
+      return userName;
     }
   }
 };

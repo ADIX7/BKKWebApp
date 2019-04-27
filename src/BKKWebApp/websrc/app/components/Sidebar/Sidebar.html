@@ -1,7 +1,12 @@
 <div id="mainSideBar">
-    <a href="#" v-on:click="openView('main')">Főoldal</a>
-    <form action="/Identity/Account/Logout" method="post">
+    <div id="mainSideBarMenu">
+        <a href="#" v-on:click="openView('main')">Főoldal</a>
+    </div>
+    <div id="userData">
+        Bejelentkezve: {{userName}}
+    </div>
+    <form action="/Identity/Account/Logout" method="post" id="logoutForm">
         <input type="hidden" name="returnUrl" value="/">
-        <button>Kijelentkezés</button>
+        <button type="submit" class="btn btn-primary">Kijelentkezés</button>
     </form>
 </div>
