@@ -1,9 +1,37 @@
 ﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<app id="app"></app>
 
-<script type="text/javascript" src="js/bundle.js"></script>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+    </form>
+    <div>
+        @Html.AntiForgeryToken()
+    </div>
+    <app id="app"></app>
+
+    <script type="text/javascript" src="/app/js/bundle.js"></script>
+
+    @section Header {
+        <link rel="stylesheet" href="/app/css/main.css">
+    }
+}
+else
+{
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}

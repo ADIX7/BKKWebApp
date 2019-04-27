@@ -3,9 +3,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './websrc/index.js',
+  entry: './websrc/app/index.js',
   output: {
-    filename: 'wwwroot/js/bundle.js',
+    filename: 'wwwroot/app/js/bundle.js',
     path: __dirname
   },
   mode: 'development',
@@ -27,7 +27,8 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CopyPlugin([
-      { from: 'favicon.ico', to: 'wwwroot/' }
+      { from: 'favicon.ico', to: 'wwwroot/' },
+      { from: 'lib/', to: 'wwwroot/lib/' }
     ],
       {
         context: 'websrc',

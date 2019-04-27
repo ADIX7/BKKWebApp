@@ -7,12 +7,12 @@ sass.compiler = require('node-sass');
 
 
 function build(done) {
-    return src("websrc/css/default.scss")
+    return src("websrc/app/css/default.scss")
         .pipe(sass().on('error', sass.logError))
         .pipe(rename(function (path) {
             path.basename = "main";
           }))
-        .pipe(dest('wwwroot/css/'));
+        .pipe(dest('wwwroot/app/css/'));
 }
 
 exports.default = build;
