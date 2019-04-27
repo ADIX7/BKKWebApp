@@ -1,3 +1,5 @@
+//TODO: remove file
+
 let baseUrl = "http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/";
 let key = "";
 let version = "3";

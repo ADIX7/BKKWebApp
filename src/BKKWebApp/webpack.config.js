@@ -27,7 +27,6 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CopyPlugin([
-      { from: '**/*.html', to: 'wwwroot/', ignore: 'components/**/*.html' },
       { from: 'favicon.ico', to: 'wwwroot/' }
     ],
       {
