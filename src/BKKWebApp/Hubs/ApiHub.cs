@@ -25,7 +25,7 @@ namespace BKKWebApp.Hubs
             var functionName = "arrivals-and-departures-for-location.json";
             var includeReferences = true;
 
-            var query = GetBaseQuery(functionName, includeReferences) + $"lon={lngS}&lat={latS}&radius=100&onlyDepartures=false&limit=30&minutesBefore=30&minutesAfter=30&groupLimit=3&clientLon={lngS}&clientLat={latS}";
+            var query = GetBaseQuery(functionName, includeReferences) + $"lon={lngS}&lat={latS}&radius=100&onlyDepartures=false&limit=30&minutesBefore=0&minutesAfter=120&groupLimit=4&clientLon={lngS}&clientLat={latS}";
 
             var ret = await client.GetAsync(query);
             var content = await ret.Content.ReadAsStringAsync();

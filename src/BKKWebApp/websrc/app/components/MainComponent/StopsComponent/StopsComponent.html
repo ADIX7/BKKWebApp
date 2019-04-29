@@ -4,11 +4,7 @@
             <span class="megalloIcon" v-bind:style="rotateIcon(stop.direction)"></span>
             <a href="#" v-on:click="$emit('navigate-to-stop', stop.id)">{{stop.name}}</a>
         </div>
-        <span v-for="route in stop.routes" class="stopRoute">
-            <span v-bind:class="{autobuszIcon: route.type === 'BUS'}"></span>
-            <span v-bind:class="{estiAutobuszIcon: route.type === 'BUS_ESTI'}"></span>
-            {{route.name}}
-        </span>
+        <RouteComponent v-for="route in stop.routes" v-bind:route="route" v-bind:showHeadsign="false" v-bind:key="route.id"></RouteComponent>
         <hr>
     </div>
 </div>

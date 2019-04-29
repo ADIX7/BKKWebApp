@@ -2,7 +2,6 @@
     {{stopName}}
     <div v-for="stopTime in stopTimeData">
             {{stopTime.name}} > {{stopTime.stopHeadSign}} : 
-            <span v-if="stopTime.timeAfter() < 60">{{stopTime.timeAfter()}}</span>
-            <span v-else>{{stopTime.timeAt()}}</span>
+            <TimeDisplayComponent v-bind:route="stopTime"></TimeDisplayComponent>
     </div>
 </div>

@@ -1,0 +1,11 @@
+<div>
+    <div v-for="element in data" class="dataContainer">
+        <RouteComponent v-bind:route="element.route" v-bind:key="element.route.key"></RouteComponent>
+        <div class="stopNameContainer">{{element.stopName}}</div>
+        <div class="stopTimeContainer">
+            <span v-for="route in element.routes" class="timeContainer">
+                <TimeDisplayComponent v-bind:route="route"></TimeDisplayComponent>
+            </span>
+        </div>
+    </div>
+</div>

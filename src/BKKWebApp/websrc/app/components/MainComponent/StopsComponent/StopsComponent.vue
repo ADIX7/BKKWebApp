@@ -1,6 +1,11 @@
 <script>
-//import bkkApi from "../../../js/bkkApi.js";
+import RouteComponent from "../../../componentsReusable/RouteComponent.vue";
+import dataHelper from "../../../js/dataHelper.js";
+
 export default {
+  components: {
+    RouteComponent
+  },
   props: ["lat", "lng"],
   inject: ["signalRApi"],
   data() {
@@ -21,14 +26,7 @@ export default {
 
           element.routeIds.forEach(function(routeId) {
             let route = response.payload.data.references.routes[routeId];
-            routes.push({
-              id: routeId,
-              name: route.shortName,
-              type:
-                route.type == "BUS" && route.color == "1E1E1E"
-                  ? "BUS_ESTI"
-                  : route.type
-            });
+            routes.push(dataHelper.createRouteObject(routeId, route));
           });
 
           _this.stopData.push({
@@ -40,7 +38,7 @@ export default {
         }
       });
     },
-    getUpdate(){
+    getUpdate() {
       this.signalRApi.methods.getStopsForLocation(this.lat, this.lng);
     }
   },
@@ -57,9 +55,6 @@ export default {
 </script>
 
 <style lang="scss">
-.stopRoute {
-  padding-right: 10px;
-}
 </style>
 
 
