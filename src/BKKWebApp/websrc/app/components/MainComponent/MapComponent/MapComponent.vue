@@ -30,7 +30,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../../css/common";
+
 #mainMap {
-  height: calc(100% - 42px);
+  height: 100%;
 }
 </style>

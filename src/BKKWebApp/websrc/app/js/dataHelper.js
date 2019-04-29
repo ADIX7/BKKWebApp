@@ -26,13 +26,9 @@ exports.getTimeByMilliseconds = getTimeByMilliseconds
 
 exports.getArrivalDepartureTime = function (element, currentTime) {
 
-    if (element.predictedArrivalTime === undefined && element.arrivalTime === undefined) {
+    if (element.predictedArrivalTime === undefined && element.arrivalTime === undefined && element.predictedDepartureTime === undefined && element.departureTime === undefined) {
         console.log(element);
-        throw new Error("Object must contains predictedArrivalTime or arrivalTime");
-    }
-    else if (element.predictedDepartureTime === undefined && element.departureTime === undefined) {
-        console.log(element);
-        throw new Error("Object must contains predictedDepartureTime or departureTime");
+        throw new Error("Object must contains predictedDepartureTime or departureTime or predictedArrivalTime or arrivalTime");
     }
 
     let arrivalTime = element.predictedArrivalTime || element.arrivalTime;
@@ -59,11 +55,9 @@ exports.getArrivalDepartureTime = function (element, currentTime) {
                 : getTimeBySeconds(departureTime),
         isPredicted: isPredicted,
         timeAfter: function () {
-            let time = this.arriveAfter === undefined
+            return this.arriveAfter === undefined
                 ? this.departureAfter
                 : this.arriveAfter;
-
-            return time == 0 ? 'MOST' : time;
         },
         timeAt: function () {
             return this.arriveAt === undefined

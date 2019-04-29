@@ -16,7 +16,7 @@
             "command": "dotnet-script",
             "type": "process",
             "args": [
-                "${workspaceFolder}/src/BKKWebApp/websrc/SignalRHandlers.csx",
+                "${workspaceFolder}/src/BKKWebApp/websrc/app/SignalRHandlers.csx",
                 "--no-cache"
             ],
             "problemMatcher": []

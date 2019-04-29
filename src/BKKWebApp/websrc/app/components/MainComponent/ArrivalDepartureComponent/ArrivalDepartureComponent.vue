@@ -15,9 +15,11 @@ export default {
       data: []
     };
   },
+  subscription: null,
+  updateTimer: null,
+  signalRInitTimer: null,
   methods: {
     processData(response) {
-      console.log(response);
       let _this = this;
       this.data = [];
       let currentTime = response.payload.currentTime / 1000;
@@ -29,12 +31,17 @@ export default {
         let route = response.payload.data.references.routes[routeId];
 
         element.stopTimes.forEach(stopTime => {
+          let tripId = stopTime.tripId;
+          let wheelchairAccessible =
+            response.payload.data.references.trips[tripId].wheelchairAccessible;
+
           routes.push({
             arrivalDepartureTime: dataHelper.getArrivalDepartureTime(
               stopTime,
               currentTime
             ),
-            tripId: stopTime.tripId
+            tripId: tripId,
+            wheelchairAccessible: wheelchairAccessible
           });
         });
 
@@ -51,28 +58,50 @@ export default {
           stopName: stop.name
         });
       });
+
+      this.$options.updateTimer = setTimeout(this.getUpdate, 5000);
     },
     getUpdate() {
       this.signalRApi.methods.getArrivalsAndDeparturesForLocation(
         this.lat,
         this.lng
       );
+    },
+    waitForSignalRConnection() {
+      if (this.signalRApi.signalRConnection.connectionState == 1) {
+        this.getUpdate();
+      } else {
+        this.$options.signalRInitTimer = setTimeout(
+          this.waitForSignalRConnection,
+          250
+        );
+      }
     }
   },
   created: function() {
-    this.signalRApi.observables.ArrivalsAndDeparturesForLocation.subscribe({
-      next: data => this.processData(JSON.parse(data)),
-      error: err => console.error("something wrong occurred: " + err),
-      complete: () => console.log("done")
-    });
+    this.$options.subscription = this.signalRApi.observables.ArrivalsAndDeparturesForLocation.subscribe(
+      {
+        next: data => this.processData(JSON.parse(data)),
+        error: err => console.error("something wrong occurred: " + err),
+        complete: () => console.log("done")
+      }
+    );
 
-    this.getUpdate();
+    this.waitForSignalRConnection();
+  },
+  beforeDestroy: function() {
+    this.$options.subscription.unsubscribe();
+    clearTimeout(this.$options.updateTimer);
+    clearTimeout(this.$options.signalRInitTimer);
   }
 };
 </script>
 <style lang="scss">
+@import "../../../css/common";
+
 .timeContainer {
-  padding-right: 10px;
+  display: inline-block;
+  width: 80px;
 }
 
 .dataContainer {
@@ -89,22 +118,29 @@ export default {
 
   .stopNameContainer {
     grid-area: tripCurrent;
+    text-align: right;
+    padding-right: 5px;
   }
 
   .stopTimeContainer {
     grid-area: stopTime;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
   }
 }
 
-@media not screen and (min-width: 600px) {
+.bkkTripArrowTip {
+  margin-bottom: 2px;
+}
+
+/*@media not screen and (min-width: $desktopViewMinWidth) {
   .dataContainer {
     grid-template-columns: auto auto;
-    .stopNameContainer{
+    .stopNameContainer {
       text-align: right;
     }
   }
-}
+}*/
 </style>
 
 <template src="./ArrivalDepartureComponent.html"></template>

@@ -1,4 +1,5 @@
 @import 'common';
+@import 'bkkIconBase';
 
 .autobuszIcon {
     @extend %bkkImage;
@@ -13,4 +14,12 @@
 .megalloIcon {
     @extend %bkkImage;
     background-position: -120px -260px;
+}
+
+.wheelChairImage {
+    @extend %wheelChairImage;
+}
+
+.bkkTripArrowTip {
+    @extend %bkkTripArrowTip;
 }

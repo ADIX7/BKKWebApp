@@ -2,18 +2,25 @@
   <span class="routeContainer">
     <span v-bind:class="{autobuszIcon: route.type === 'BUS'}"></span>
     <span v-bind:class="{estiAutobuszIcon: route.type === 'BUS_ESTI'}"></span>
-    {{route.name}} {{headsign}}
+    {{route.name}} 
+    <span class="bkkTripArrowTip"></span> 
+    {{headsign}}    
   </span>
 </template>
 
 <script>
 export default {
   props: ["route", "showHeadsign"],
+  methods: {
+      shouldDrawHeadsign(){
+        return this.showHeadsign === false || this.route.headsign === undefined;
+      }
+  },
   computed: {
     headsign: function() {
-      return this.showHeadsign === false || this.route.headsign === undefined
+      return this.shouldDrawHeadsign()
         ? ""
-        : "> " + this.route.headsign;
+        : this.route.headsign;
     }
   }
 };

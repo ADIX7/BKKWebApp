@@ -71,7 +71,8 @@ export default {
         return {
             observables: observables,
             methods: methods,
-            getObservable: handlerName => observables[handlerName]
+            getObservable: handlerName => observables[handlerName],
+            signalRConnection: signalRConnection
         };
     }
 }

@@ -1,6 +1,6 @@
-<div class="mainContent">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
+<div id="mainContent">
+    <ul class="nav nav-tabs" id="mainContentNavBar">
+        <li class="nav-item" v-if="!externalData.desktopMode">
             <a v-bind:class="[{active: activeTab === 'map'}, 'nav-link']" v-on:click="activeTab = 'map'" href="#">Térkép</a>
         </li>
         <li class="nav-item">
@@ -13,7 +13,7 @@
             <a v-bind:class="[{active: activeTab === 'stops'}, 'nav-link']" v-on:click="activeTab = 'stops'" href="#">Megállók</a>
         </li>
     </ul>
-    <MapComponent v-if="activeTab === 'map'" v-bind:lat.sync="lat" v-bind:lng.sync="lng"></MapComponent>
+    <MapComponent v-if="activeTab === 'map' || externalData.desktopMode" v-bind:lat.sync="lat" v-bind:lng.sync="lng"></MapComponent>
     <ArrivalDepartureComponent v-if="activeTab === 'departure'" v-bind:lat="lat" v-bind:lng="lng"></ArrivalDepartureComponent>
     <StopsComponent v-if="activeTab === 'stops'" v-bind:lat="lat" v-bind:lng="lng" v-on:navigate-to-stop="$emit('navigate-to-stop', $event)"></StopsComponent>
 </div>

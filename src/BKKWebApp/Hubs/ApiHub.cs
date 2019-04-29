@@ -31,7 +31,7 @@ namespace BKKWebApp.Hubs
             var content = await ret.Content.ReadAsStringAsync();
             var data =  CreateResponse(content).AsJObject();
 
-            await Clients.All.SendAsync(nameof(GetArrivalsAndDeparturesForLocation).Substring(3), data);
+            await Clients.Client(Context.ConnectionId).SendAsync(nameof(GetArrivalsAndDeparturesForLocation).Substring(3), data);
         }
         public async Task GetArrivalsAndDeparturesForStop(string stopId)
         {
@@ -44,7 +44,7 @@ namespace BKKWebApp.Hubs
             var content = await ret.Content.ReadAsStringAsync();
             var data =  CreateResponse(content).AsJObject();
 
-            await Clients.All.SendAsync(nameof(GetArrivalsAndDeparturesForStop).Substring(3), data);
+            await Clients.Client(Context.ConnectionId).SendAsync(nameof(GetArrivalsAndDeparturesForStop).Substring(3), data);
         }
 
         public async Task GetStopsForLocation(float lat, float lng)
@@ -61,7 +61,7 @@ namespace BKKWebApp.Hubs
             var content = await ret.Content.ReadAsStringAsync();
             var data = CreateResponse(content).AsJObject();
 
-            await Clients.All.SendAsync(nameof(GetStopsForLocation).Substring(3), data);
+            await Clients.Client(Context.ConnectionId).SendAsync(nameof(GetStopsForLocation).Substring(3), data);
         }
     }
 }
