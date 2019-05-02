@@ -20,6 +20,26 @@
                 "--no-cache"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "Generate DTOs",
+            "command": "dotnet-script",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/src/BKKWebApp.Data/Generators/GenerateDTOs.csx",
+                "--no-cache"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Events",
+            "command": "dotnet-script",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/src/BKKWebApp.Data/Generators/GenerateEvents.csx",
+                "--no-cache"
+            ],
+            "problemMatcher": []
         }
     ]
 }

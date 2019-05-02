@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BKKWebApp", "BKKWebApp\BKKWebApp.csproj", "{E9328AF4-060A-4451-B6D3-93630832CE88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BKKWebApp.Data", "BKKWebApp.Data\BKKWebApp.Data.csproj", "{534A6C09-623C-4EC6-B331-762D0DA086B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{E9328AF4-060A-4451-B6D3-93630832CE88}.Release|x64.Build.0 = Release|Any CPU
 		{E9328AF4-060A-4451-B6D3-93630832CE88}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9328AF4-060A-4451-B6D3-93630832CE88}.Release|x86.Build.0 = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|x64.Build.0 = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Debug|x86.Build.0 = Debug|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|x64.ActiveCfg = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|x64.Build.0 = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|x86.ActiveCfg = Release|Any CPU
+		{534A6C09-623C-4EC6-B331-762D0DA086B2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

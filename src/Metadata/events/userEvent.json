@@ -1,0 +1,17 @@
+{
+    "createUser": {
+        "verb": "create",
+        "subject": "user",
+        "generateCommand": true,
+        "properties": [
+            {
+                "name": "userName",
+                "type": "string"
+            },
+            {
+                "name": "userId",
+                "type": "string"
+            }
+        ]
+    }
+}

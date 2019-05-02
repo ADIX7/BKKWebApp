@@ -20,4 +20,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\BKKWebApp.Data\BKKWebApp.Data.csproj" />
+  </ItemGroup>
+
 </Project>
