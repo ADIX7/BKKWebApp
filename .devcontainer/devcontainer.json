@@ -1,0 +1,14 @@
+{
+	"name": "BKKWebApp docker dev environment",
+	"dockerComposeFile": "docker-compose.yml",
+    "service": "dockerdevenv",
+	"appPort": 80,
+	"workspaceFolder": "/workspace",
+	"settings": {
+		"omnisharp.path": "",
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"extensions": [
+		"ms-vscode.csharp"
+	]
+}
