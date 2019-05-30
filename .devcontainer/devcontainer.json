@@ -11,9 +11,10 @@
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	"extensions": [
-		"ms-vscode.csharp",
 		"alexcvzz.vscode-sqlite",
+		"mrmlnc.vscode-scss",
+		"ms-vscode.csharp",
 		"octref.vetur",
-		"mrmlnc.vscode-scss"
+		"pflannery.vscode-versionlens"
 	]
 }

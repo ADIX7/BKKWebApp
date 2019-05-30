@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style lang="scss">
+#stopContainer {
+  overflow-y: auto;
+}
 </style>
 
 
