@@ -99,6 +99,10 @@ export default {
 <style lang="scss">
 @import "../../../css/common";
 
+#arrivalDepartureContainer {
+  overflow-y: auto;
+}
+
 .timeContainer {
   display: inline-block;
   width: 80px;

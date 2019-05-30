@@ -1,14 +1,19 @@
 {
 	"name": "BKKWebApp docker dev environment",
 	"dockerComposeFile": "docker-compose.yml",
-    "service": "dockerdevenv",
-	"appPort": 80,
+	"service": "dockerdevenv",
+	"appPort": [
+		"8080:80"
+	],
 	"workspaceFolder": "/workspace",
 	"settings": {
 		"omnisharp.path": "",
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	"extensions": [
-		"ms-vscode.csharp"
+		"ms-vscode.csharp",
+		"alexcvzz.vscode-sqlite",
+		"octref.vetur",
+		"mrmlnc.vscode-scss"
 	]
 }
