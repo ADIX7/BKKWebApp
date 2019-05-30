@@ -13,5 +13,6 @@ RUN dotnet publish -c Release -o ../out BKKWebApp/BKKWebApp.csproj
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
+COPY ./BKKWebApp/app.db .
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "BKKWebApp.dll"]

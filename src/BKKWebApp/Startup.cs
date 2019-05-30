@@ -38,7 +38,8 @@ namespace BKKWebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
+            var envConnection = Environment.GetEnvironmentVariable("SQL_CONNECTION");
+            var defaultConnection = envConnection ?? Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(defaultConnection));
             services.AddDefaultIdentity<IdentityUser>()
