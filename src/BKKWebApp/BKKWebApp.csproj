@@ -25,4 +25,9 @@
     <ProjectReference Include="..\BKKWebApp.Data\BKKWebApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="app.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
