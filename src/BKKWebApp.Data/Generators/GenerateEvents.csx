@@ -42,8 +42,8 @@ interface INameProvider
 
 class VerbSubjectNameProvider : INameProvider
 {
-    string Verb;
-    string Subject;
+    private readonly string Verb;
+    private readonly string Subject;
     public VerbSubjectNameProvider(string verb, string subject)
     {
         Verb = verb.FirstLetterToUpperCase();
@@ -62,7 +62,7 @@ class VerbSubjectNameProvider : INameProvider
 
 class SimpleNameProvider : INameProvider
 {
-    string Name;
+    private readonly string Name;
     public SimpleNameProvider(string name)
     {
         Name = name.FirstLetterToUpperCase();
@@ -86,8 +86,8 @@ var dataDir = new DirectoryInfo(Path.Combine(folderName, "../../Metadata/events"
 foreach (var jsonFile in dataDir.GetFiles("*.json"))
 {
     Console.WriteLine(jsonFile.FullName);
-    var jobject = JObject.Parse(File.ReadAllText(jsonFile.FullName));
-    foreach (var child in jobject.Root)
+    var jObject = JObject.Parse(File.ReadAllText(jsonFile.FullName));
+    foreach (var child in jObject.Root)
     {
         var classData = ((JProperty)child).Value;
 

@@ -10,9 +10,8 @@ namespace BKKWebApp.Repositories
 {
     public class UserRepository : HandleEvent<UserCreatedEvent>
     {
-        List<User> users = new List<User>();
-
-        EventBus.EventBus _eventBus;
+        private readonly List<User> _users = new List<User>();
+        private readonly EventBus.EventBus _eventBus;
 
         public UserRepository(EventBus.EventBus eventBus)
         {
@@ -23,7 +22,7 @@ namespace BKKWebApp.Repositories
         public void Handle(UserCreatedEvent @event)
         {
             var newUser = new User(@event.AggregateId, @event.UserId, @event.UserName);
-            users.Add(newUser);
+            _users.Add(newUser);
         }
     }
 }

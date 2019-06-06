@@ -30,14 +30,12 @@ namespace BKKWebApp.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-
             UserCommandHandler userCommandHandler)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-
             _userCommandHandler = userCommandHandler;
         }
 

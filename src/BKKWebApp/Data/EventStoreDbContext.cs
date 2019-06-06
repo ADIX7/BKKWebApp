@@ -11,14 +11,13 @@ namespace BKKWebApp.Data
         public EventStoreDbContext(DbContextOptions<EventStoreDbContext> options) : base(options) { }
 
         public DbSet<EventDescriptor> Events { get; set; }
-
     }
+
     public class EventDescriptor
     {
         public Guid AggregateId { get; set; }
         public DateTime Created { get; set; }
         public string Event { get; set; }
-
 
         public static EventDescriptor FromEvent()
         {

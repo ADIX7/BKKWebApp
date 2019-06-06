@@ -13,7 +13,7 @@ namespace BKKWebApp.Data.Models
         public List<string> Favorites { get; set; } = new List<string>();
 
         /// <summary>
-        /// 
+        /// Instantiate a user
         /// </summary>
         /// <param name="aggregateId">A random GUID</param>
         /// <param name="userId">E-mail address of the user</param>

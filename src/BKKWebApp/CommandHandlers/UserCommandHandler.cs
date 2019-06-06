@@ -10,11 +10,13 @@ namespace BKKWebApp.Handlers
 {
     public class UserCommandHandler : HandleCommand<CreateUser>
     {
-        readonly UserRepository _repository;
+        private readonly UserRepository _repository;
+
         public UserCommandHandler(UserRepository repository)
         {
             _repository = repository;
         }
+
         public void Handle(CreateUser command)
         {
             var @event = new UserCreatedEvent(Guid.NewGuid(), -1, command.UserName, command.UserId);
