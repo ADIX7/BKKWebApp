@@ -4,15 +4,15 @@ using BKKWebApp.Data.Base;
 
 namespace BKKWebApp.Data.Commands
 {
-    public class CreateUser : Command
+    public class AddFavorite : Command
     {
-		public string UserName { get; }
 		public string UserId { get; }
+		public string Favorite { get; }
 
-        public CreateUser(string userName, string userId)
+        public AddFavorite(string userId, string favorite)
         {
-			UserName = userName;
 			UserId = userId;
+			Favorite = favorite;
         }
     }
 }

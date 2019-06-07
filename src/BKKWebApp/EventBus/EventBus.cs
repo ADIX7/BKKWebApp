@@ -12,7 +12,7 @@ namespace BKKWebApp.EventBus
     {
         private readonly Dictionary<Type, List<object>> eventHandlers = new Dictionary<Type, List<object>>();
 
-        public void AddEventHandler<T_Event>(HandleEvent<T_Event> eventHandler) where T_Event : Event
+        public void AddEventHandler<T_Event>(IHandleEvent<T_Event> eventHandler) where T_Event : Event
         {
             if (!eventHandlers.ContainsKey(typeof(T_Event)))
             {
@@ -27,16 +27,22 @@ namespace BKKWebApp.EventBus
         {
             foreach (var handler in eventHandlers[typeof(T_Event)])
             {
-                ((HandleEvent<T_Event>)handler).Handle(@event);
+                ((IHandleEvent<T_Event>)handler).Handle(@event);
             }
         }
 
         public void DiscoverHandlers(object handlerContainer)
         {
-            var iss = handlerContainer.GetType().GetInterfaces().ToList();
-            var interfaces = iss.Where(i => typeof(HandleEvent).IsAssignableFrom(i) && i.IsGenericType).ToList();
+            var handlerInterfaces = handlerContainer
+                .GetType()
+                .GetInterfaces()
+                .Where(i =>
+                    typeof(IHandleEvent)
+                        .IsAssignableFrom(i)
+                    && i.IsGenericType)
+                .ToList();
 
-            foreach (var @interface in interfaces)
+            foreach (var @interface in handlerInterfaces)
             {
                 var eventType = @interface.GenericTypeArguments[0];
                 var method = GetType().GetMethod(nameof(AddEventHandler)).MakeGenericMethod(eventType);

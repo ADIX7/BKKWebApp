@@ -6,23 +6,23 @@ using Newtonsoft.Json.Linq;
 
 namespace BKKWebApp.Data.Events
 {
-    public class UserCreatedEvent : Event
+    public class FavoriteAddedEvent : Event
     {
-        public const string eventName = "userCreated";
+        public const string eventName = "favoriteAdded";
 
-		public string UserName { get; set; }
 		public string UserId { get; set; }
+		public string Favorite { get; set; }
 
-        internal UserCreatedEvent(string source) : base(eventName)
+        internal FavoriteAddedEvent(string source) : base(eventName)
         {
             var sourceObj = JObject.Parse(source);
             throw new NotImplementedException();
         }
 
-        public UserCreatedEvent(Guid aggregateId, int version, string userName, string userId) : base(aggregateId, version, eventName)
+        public FavoriteAddedEvent(Guid aggregateId, int version, string userId, string favorite) : base(aggregateId, version, eventName)
         {
-			UserName = userName;
 			UserId = userId;
+			Favorite = favorite;
         }
 
         public override string Serialize()

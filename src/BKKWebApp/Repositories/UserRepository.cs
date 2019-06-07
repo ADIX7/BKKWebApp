@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BKKWebApp.Repositories
 {
-    public class UserRepository : HandleEvent<UserCreatedEvent>
+    public class UserRepository : IHandleEvent<UserCreatedEvent>
     {
         private readonly List<User> _users = new List<User>();
         private readonly EventBus.EventBus _eventBus;
@@ -18,6 +18,8 @@ namespace BKKWebApp.Repositories
             _eventBus = eventBus;
             _eventBus.DiscoverHandlers(this);
         }
+
+        public IReadOnlyList<User> Users => _users.AsReadOnly();
 
         public void Handle(UserCreatedEvent @event)
         {

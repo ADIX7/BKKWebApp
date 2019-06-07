@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BKKWebApp.Data.Base
 {
     public abstract class Event
     {
-        public Guid AggregateId { get; set; }
-        public int Version { get; set; }
+        public Guid AggregateId { get; }
+        public int Version { get; }
+        public string Type { get; }
 
-        public Event() { }
+        protected Event(string type) => Type = type ?? throw new ArgumentNullException(nameof(type));
 
-        public Event(Guid aggregateId, int version)
+        protected Event(Guid aggregateId, int version, string type)
         {
             AggregateId = aggregateId;
             Version = version;
+            Type = type ?? throw new ArgumentNullException(nameof(type));
         }
+
+        public abstract string Serialize();
     }
 }

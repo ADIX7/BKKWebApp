@@ -53,6 +53,7 @@ namespace BKKWebApp
             services.AddDbContext<EventStoreDbContext>(options => options.UseSqlite(defaultConnection));
 
             services.AddSingleton<EventBus.EventBus>();
+            services.AddSingleton<EventManager>();
             services.AddSingleton<UserCommandHandler>();
             services.AddSingleton<UserRepository>();
         }

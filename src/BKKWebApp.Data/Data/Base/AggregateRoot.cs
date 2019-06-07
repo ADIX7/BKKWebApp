@@ -10,7 +10,7 @@ namespace BKKWebApp.Data.Base
         public Guid Id { get; protected set; }
         public int Version { get; internal set; }
 
-        public AggregateRoot(Guid id)
+        protected AggregateRoot(Guid id)
         {
             Id = id;
         }

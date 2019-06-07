@@ -13,5 +13,20 @@
                 "type": "string"
             }
         ]
+    },
+    "addFavorite": {
+        "verb": "add",
+        "subject": "favorite",
+        "generateCommand": true,
+        "properties": [
+            {
+                "name": "userId",
+                "type": "string"
+            },
+            {
+                "name": "favorite",
+                "type": "string"
+            }
+        ]
     }
 }

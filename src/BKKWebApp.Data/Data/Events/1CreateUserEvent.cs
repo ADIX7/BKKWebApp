@@ -1,4 +1,4 @@
-﻿using BKKWebApp.Data.Base;
+﻿/* using BKKWebApp.Data.Base;
 using System;
 
 namespace BKKWebApp.Data.Data.Events
@@ -15,3 +15,4 @@ namespace BKKWebApp.Data.Data.Events
         }
     }
 }
+ */

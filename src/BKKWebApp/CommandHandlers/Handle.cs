@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace BKKWebApp.Handlers
 {
-    public interface HandleEvent { }
-    public interface HandleEvent<T_Event> : HandleEvent where T_Event : Event
+    public interface IHandleEvent { }
+
+    public interface IHandleEvent<T_Event> : IHandleEvent where T_Event : Event
     {
         void Handle(T_Event @event);
     }
 
-    public interface HandleCommand { }
-    public interface HandleCommand<T_Command> : HandleCommand where T_Command : Command
+    public interface IHandleCommand { }
+
+    public interface IHandleCommand<T_Command> : IHandleCommand where T_Command : Command
     {
         void Handle(T_Command command);
     }

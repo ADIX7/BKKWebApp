@@ -16,7 +16,7 @@ namespace BKKWebApp.Data
     public class EventDescriptor
     {
         public Guid AggregateId { get; set; }
-        public DateTime Created { get; set; }
+        public DateTime Recorded { get; set; }
         public string Event { get; set; }
 
         public static EventDescriptor FromEvent()
